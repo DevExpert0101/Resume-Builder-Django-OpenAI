@@ -1,0 +1,160 @@
+body {
+
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+textarea {
+  width: 300px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.tablink {
+  background-color: #f2f2f2;
+  color: #555;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.tablink:hover {
+  background-color: #ddd;
+}
+
+.section {
+  display: none;
+}
+
+.active {
+  background-color: #ccc;
+}
+
+#tabs {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;  
+}
+
+
+.form-row {
+  display: flex;
+  align-items: left;
+  
+}
+
+.form-row label{
+  margin-right: 10px;
+}
+
+#contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+#workExperience {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+#education {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.section-experience {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.generateButton {
+  margin: 10px 20px;
+  padding: 10px 20px;
+  background-color: transparent;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-group {
+  width: 50%;
+  padding: 10px;
+  background-color: transparent;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info {
+
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#button1 {
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+  border: 0px solid black;
+  transition: 0.2s;
+}
+
+#button1:hover {
+  /* border: 1px solid black; */
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

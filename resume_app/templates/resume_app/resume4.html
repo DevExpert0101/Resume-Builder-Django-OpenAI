@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% load static %}
+
+  <link rel="stylesheet" href="{% static 'styles/resume4.css' %}">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+  </script>
+</head>
+
+<body>
+  <button id="download-button">generate PDF</button>
+  <div id="editor"></div>
+
+  <div class='parent' id="content">
+    <header>
+      <h1>{{name}}</h1>
+      <h2>{{title}}</h2>
+
+    </header>
+
+    <section class="summary">
+      <h3>Summary</h3>
+      <p>{{summary}}</p>
+
+    </section>
+
+    <section class="experience">
+      <h3>Work Experience</h3>
+      {% for experience in workExperience %}
+      <p><em>{{experience.dates}} | {{experience.company}} | {{experience.title}}</em></p>
+      <!-- <p>{{experience.description}}</p> -->
+
+      {% for line in experience.description %}
+      <p>
+          <li>{{line}}</li>
+      </p>
+      {% endfor %}
+
+      {% endfor %}
+    </section>
+
+    <section class="education">
+      <h3>Education</h3>
+      {% for edu in education %}
+							<p><em>{{edu.dates}} | {{edu.school}} | {{edu.degree}}</em></p>
+							<p>{{edu.description}}</p>
+
+							{% endfor %}
+    </section>
+
+    <section class="skills">
+      <h3>Skills</h3>
+      <ul>
+        {% for skill in skills %}
+        <li>{{skill}}</li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <footer>
+      <p>Email: john.doe@example.com | Phone: (123) 456-7890</p>
+    </footer>
+  </div>
+  <script src="{% static 'resume_app/js/script.js' %}"></script>
+</body>
+
+</html>

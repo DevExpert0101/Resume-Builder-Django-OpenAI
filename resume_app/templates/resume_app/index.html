@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume Generator</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'styles/index.css' %}">
+    <script src="{% static 'resume_app/js/script.js' %}"></script>
+</head>
+
+<body>
+    <h1>Resume Generator</h1>
+    <!-- <form id="resumeForm" action="{% url 'resume_app:generate_resume1' %}" method="POST"> -->
+    <form id="resumeForm" method="POST">
+        {% csrf_token %}
+        <div class="container">
+                        
+            <div class="info">
+                <div>
+                    <div class="form-row">
+                        <label for="name">Name:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="name" name="name"><br><br>
+                    </div>
+                    <div class="form-row">
+                        <label for="name">Title:</label>
+                    </div>
+                    <div>
+                        <input type="text" id="title" name="title"><br><br>
+                    </div>
+                </div>
+
+                <h2>Sections</h2>
+                <div id="tabs">
+                    <button class="tablink" onclick="openSection(event, 'contact')">Contact Info</button>
+                    <button class="tablink" onclick="openSection(event, 'summary')">Summary</button>
+                    <button class="tablink" onclick="openSection(event, 'work')">Work Experience</button>
+                    <button class="tablink" onclick="openSection(event, 'edu')">Education</button>
+                    <button class="tablink" onclick="openSection(event, 'skills')">Skills</button>
+                    <!-- Add more buttons for additional sections -->
+                </div>
+
+
+                <div id="contact" class="section">
+                    <h3>Contact Info</h3>
+                    <label for="address">Address</label>
+                    <input type="text" id="address" name="address">
+
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email">
+
+                    <label for="github">GitHub</label>
+                    <input type="text" id="github" name="github">
+
+                    <label for="email">LinkedIn</label>
+                    <input type="text" id="linkedin" name="linkedin">
+
+                    <label for="email">Phone</label>
+                    <input type="text" id="phone" name="phone">
+
+                    <!-- Add more fields for contact information -->
+                </div>
+
+                <div id="summary" class="section">
+                    <h3>Summary</h3>
+                    <textarea id="summaryText" name="summaryText" rows="4" cols="50"></textarea><br><br>
+
+                    <!-- Add more fields for the summary section -->
+                </div>
+
+                <div id="work" class="section">
+                    <h3>Work Experience</h3>
+                    <button onclick="addWorkExperience(event)">Add Work Experience</button>
+                    <div id="workExperience" class="section-experience">
+                        <label for="workTitle_0">Title</label>
+                        <input type="text" id="workTitle_0" name="workTitle_0">
+
+                        <label for="workCompany_0">Company</label>
+                        <input type="text" id="workCompany_0" name="workCompany_0">
+
+                        <label for="workDate_0">Date</label>
+                        <input type="text" id="workDate_0" name="workDate_0">
+
+                        <label for="workDescription_0">Description</label>
+                        <textarea id="workDescription_0" name="workDescription_0" rows="4" cols="50"></textarea><br><br>
+                    </div>
+
+                </div>
+
+                <!-- Add more fields for the work experience section -->
+
+                <div id="edu" class="section">
+                    <h3>Education</h3>
+                    <button onclick="addEducation(event)">Add Education</button>
+                    <div id="education" class="section-education">
+                        <label for="eduDegree_0">Degree</label>
+                        <input type="text" id="eduDegree_0" name="eduDegree_0">
+
+                        <label for="eduSchool_0">School</label>
+                        <input type="text" id="eduSchool_0" name="eduSchool_0">
+
+                        <label for="eduDate_0">Date</label>
+                        <input type="text" id="eduDate_0" name="eduDate_0">
+
+                        <label for="eduDescription_0">Description</label>
+                        <textarea id="eduDescription_0" name="eduDescription_0" rows="4" cols="50"></textarea><br><br>
+                    </div>
+
+                </div>
+
+                <div id="skills" class="section">
+                    <h3>Skills</h3>
+                    <textarea id="skillArea" name="skills" rows="4" , cols="50"></textarea><br><br>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <div id = "button1" onclick="submitForm('/generate_resume1/')">
+                    <img src="{% static 'images/1.png' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume2/')">
+                    <img src="{% static 'images/2.png' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume3/')">
+                    <img src="{% static 'images/3.png' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume5/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume6/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume7/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume8/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume9/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume10/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+                <div id = "button1" onclick="submitForm('/generate_resume4/')">
+                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+    <script>
+        function openSection(evt, sectionName) {
+
+            evt.preventDefault();
+            var i, section, tablink;
+
+            // Hide all sections
+            section = document.getElementsByClassName("section");
+            for (i = 0; i < section.length; i++) {
+                section[i].style.display = "none";
+            }
+
+            // Deactivate all tablinks
+            tablink = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablink.length; i++) {
+                tablink[i].className = tablink[i].className.replace(" active", "");
+            }
+
+            // Show the selected section and activate the corresponding tablink
+            document.getElementById(sectionName).style.display = "flex";
+            document.getElementById(sectionName).style.flexDirection = "column";
+            document.getElementById(sectionName).style.alignItems = "flex-start";
+            document.getElementById(sectionName).style.marginBottom = "10px";
+            evt.currentTarget.className += " active";
+        }
+
+        var workExperienceCount = 1;
+
+        function addWorkExperience() {
+            event.preventDefault();
+            var workExperience = document.getElementById("work");
+
+            // Create a new set of fields
+            var newFields = document.createElement("div");
+            newFields.innerHTML = `
+                <label for="workTitle_${workExperienceCount}">Title</label>
+                <input type="text" id="workTitle_${workExperienceCount}" name="workTitle_${workExperienceCount}">
+        
+                <label for="workCompany_${workExperienceCount}">Company</label>
+                <input type="text" id="workCompany_${workExperienceCount}" name="workCompany_${workExperienceCount}">
+
+                <label for="workDate_${workExperienceCount}">Date</label>
+                <input type="text" id="workDate_${workExperienceCount}" name="workDate_${workExperienceCount}">
+        
+                <label for="workDescription_${workExperienceCount}">Description</label>
+                <textarea id="workDescription_${workExperienceCount}" name="workDescription_${workExperienceCount}" rows="4" cols="50"></textarea><br><br>
+            `;
+
+            // Append the new fields to the work experience section
+            workExperience.appendChild(newFields);
+
+            // Increment the work experience count for unique names
+            workExperienceCount++;
+        }
+        function addEducation(event) {
+            event.preventDefault();
+
+            var educationDiv = document.getElementById("education");
+
+            var eduDegree = document.createElement("input");
+            eduDegree.type = "text";
+            eduDegree.name = "eduDegree";
+            eduDegree.placeholder = "Degree";
+            educationDiv.appendChild(eduDegree);
+
+            var eduSchool = document.createElement("input");
+            eduSchool.type = "text";
+            eduSchool.name = "eduSchool";
+            eduSchool.placeholder = "School";
+            educationDiv.appendChild(eduSchool);
+
+            var eduDate = document.createElement("input");
+            eduDate.type = "text";
+            eduDate.name = "eduDate";
+            eduDate.placeholder = "Date";
+            educationDiv.appendChild(eduDate);
+
+            var eduDescription = document.createElement("textarea");
+            eduDescription.name = "eduDescription";
+            eduDescription.rows = "4";
+            eduDescription.cols = "50";
+            eduDescription.placeholder = "Description";
+            educationDiv.appendChild(eduDescription);
+
+            educationDiv.appendChild(document.createElement("br"));
+        }
+
+        function submitForm(page) {
+            var form = document.getElementById('resumeForm');
+            // form.action = page + '.html';  // Set the action URL based on the clicked button
+            form.action = page
+            form.submit();  // Submit the form
+        }
+    </script>
+</body>
+
+</html>

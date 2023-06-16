@@ -1,0 +1,88 @@
+<html>
+	<head>
+		{% load static %}
+
+    <link rel="stylesheet" href="{% static 'styles/resume2.css' %}">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+    </script>
+	</head>
+	<body>
+		<button id="download-button">generate PDF</button>
+    <div id="editor"></div>
+
+		<div class='parent' id="content">
+			<div class="right">
+				<div class="inner">
+					<div class="name-hero">
+						<div class="name-text">
+							<h3>{{name}} </h3>
+						</div>
+
+						<div class="title">
+							<h3> {{title}} </h3>
+						</div>
+					</div>
+
+
+					<div class="summary">
+							<h1>Summary</h1>
+							<p>{{summary}}</p>
+					</div>
+					<section>
+							<h1>Employment</h1>
+							{% for experience in workExperience %}
+							<p><em>{{experience.dates}} | {{experience.company}} | {{experience.title}}</em></p>
+							<!-- <p>{{experience.description}}</p> -->
+
+							{% for line in experience.description %}
+							<p>
+									<li>{{line}}</li>
+							</p>
+							{% endfor %}
+
+							{% endfor %}
+					</section>
+					<section>
+							<h1>Education</h1>
+							{% for edu in education %}
+							<p><em>{{edu.dates}} | {{edu.school}} | {{edu.degree}}</em></p>
+							<p>{{edu.description}}</p>
+
+							{% endfor %}
+					</section>
+
+
+			</div>
+		</div>
+				<div class="left">
+						<h2>Contact Information</h2>
+						<p>Email: {{contactInfo.email}}</p>
+						<p>Phone: {{contactInfo.phone}}</p>
+						<p>Address: {{contactInfo.address}}</p>
+						<!-- <p>LinkedIn: <a href="{{contactInfo.linkedin}}">LinkedIn Profile</a></p>
+						<p>Github: <a href="{{contactInfo.github}}">GitHub Profile</a></p> -->
+						<p>LinkedIn: {{contactInfo.linkedin}}</p>
+						<p>Github: {{contactInfo.github}}</p>
+
+						<section>
+								<h1>Skills</h1>
+								<p>
+									<!-- <ul class="skill-set"> -->
+											{% for skill in skills %}
+											<li>{{skill}}</li>
+											{% endfor %}
+									<!-- </ul> -->
+								</p>
+						</section>
+				</div>
+		</div>
+		</div>
+		<script src="{% static 'resume_app/js/script.js' %}"></script>
+	</body>
+	
+</html>

@@ -1,0 +1,86 @@
+/* resume4.css */
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.parent {
+  max-width: 800px;
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+
+header h2 {
+  font-size: 18px;
+  margin-top: 5px;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+section h3 {
+  font-size: 22px;
+  margin: 0;
+}
+
+section p {
+  margin-top: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+ul li h4 {
+  font-size: 18px;
+  margin: 0;
+}
+
+ul li p {
+  margin-top: 5px;
+}
+
+footer {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 14px;
+}
+
+#download-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#editor {
+  display: none;
+}
