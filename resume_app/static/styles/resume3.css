@@ -40,3 +40,13 @@ footer {
 section p {
 	font-weight: bold;
 }
+
+.parent {
+  width: 1050px;
+  /* height: 1485px; */
+  margin: auto;
+}
+
+@media print {
+	.no-print, .no-print * { display: none !important; }
+}

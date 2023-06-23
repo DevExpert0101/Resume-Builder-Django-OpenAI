@@ -5,6 +5,7 @@
   {% load static %}
 
   <link rel="stylesheet" href="{% static 'styles/resume4.css' %}">
+  <script src="{% static 'resume_app/js/script.js' %}"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
   </script>
@@ -15,10 +16,15 @@
 </head>
 
 <body>
-  <button id="download-button">generate PDF</button>
-  <div id="editor"></div>
 
-  <div class='parent' id="content">
+  <!-- <ul class="download_print_button horizontal_list">
+    <li onclick="downloadCV()"><span class="icon entypo-download"></span>Download CV</li>
+    
+  </ul> -->
+
+  <button class="btn btn-block no-print btn-success" onclick="window.print()">PRINT AS PDF</button>
+
+  <div class='parent' id="resume">
     <header>
       <h1>{{name}}</h1>
       <h2>{{title}}</h2>
@@ -68,7 +74,40 @@
       <p>Email: john.doe@example.com | Phone: (123) 456-7890</p>
     </footer>
   </div>
-  <script src="{% static 'resume_app/js/script.js' %}"></script>
+
+  <script>
+
+    window.jsPDF = window.jspdf.jsPDF;
+    window.html2canvas = html2canvas;
+
+    var specialElementHandlers = {
+      '.no-expert': function (element, renderer) {
+        return true
+      }
+    }
+
+    function downloadCV() {
+
+      const { jsPDF } = window.jspdf;
+
+      let doc = new jsPDF('p', 'mm', 'a4');
+      let pdfjs = document.querySelector('#resume');
+      doc.html(pdfjs, {
+        callback: function (doc) {
+          doc.save("newpdf.pdf");
+        },
+        // margin: [10, 10, 10, 10],
+
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 210, //target width in the PDF document
+        height: 297,
+        windowWidth: 1200	 //window width in CSS pixels
+      });
+    }
+  </script>
+  
 </body>
 
 </html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Resume</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			margin: 0;
+			padding: 20px;
+		}
+
+		.container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		.resume {
+			width: 800px;
+			background-color: #fff;
+			padding: 40px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h1, h2, h3, p {
+			margin: 0;
+		}
+
+		.name {
+			font-size: 32px;
+			color: #333;
+			margin-bottom: 10px;
+		}
+
+		.title {
+			font-size: 20px;
+			color: #777;
+			margin-bottom: 20px;
+		}
+
+		.section {
+			margin-bottom: 30px;
+		}
+
+		.section-title {
+			font-size: 24px;
+			color: #333;
+			margin-bottom: 10px;
+		}
+
+		.section-content {
+			margin-left: 20px;
+		}
+
+		.contact-info {
+			margin-top: 40px;
+			border-top: 1px solid #ddd;
+			padding-top: 20px;
+		}
+
+		.contact-info h1 {
+			margin-bottom: 10px;
+		}
+
+		.contact-info p {
+			margin-bottom: 8px;
+		}
+
+		.skill-set {
+			display: flex;
+			flex-wrap: wrap;
+			list-style-type: none;
+			padding: 0;
+			margin: 0;
+			margin-top: 10px;
+		}
+
+		.skill {
+			background-color: #eee;
+			color: #333;
+			border-radius: 4px;
+			padding: 6px 12px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+		}
+
+		button {
+			margin-top: 30px;
+			padding: 12px 24px;
+			font-size: 16px;
+			color: #fff;
+			background-color: #333;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #555;
+		}
+
+		@media print {
+			.no-print, .no-print * { display: none !important; }
+		}
+	</style>
+</head>
+<body>
+  <!-- <button id="download-button">Generate PDF</button> -->
+	<button class="btn btn-block no-print btn-success" onclick="window.print()">PRINT AS PDF</button>
+	<div class="container">
+		<div class="resume">
+			<div class="name">{{name}}</div>
+			<div class="title">{{title}}</div>
+
+			<div class="section">
+				<h1 class="section-title">Summary</h1>
+				<div class="section-content">
+					<p>{{summary}}</p>
+				</div>
+			</div>
+
+			<div class="section">
+				<h1 class="section-title">Employment</h1>
+				<div class="section-content">
+					{% for experience in workExperience %}
+						<p><em>{{experience.dates}} | {{experience.company}} | {{experience.title}}</em></p>
+						<ul>
+							{% for line in experience.description %}
+								<li>{{line}}</li>
+							{% endfor %}
+						</ul>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="section">
+				<h1 class="section-title">Education</h1>
+				<div class="section-content">
+					{% for edu in education %}
+						<p><em>{{edu.dates}} | {{edu.school}} | {{edu.degree}}</em></p>
+						<p>{{edu.description}}</p>
+					{% endfor %}
+				</div>
+			</div>
+
+			<div class="contact-info">
+				<h1>Contact Information</h1>
+				<p>Email: {{contactInfo.email}}</p>
+				<p>Phone: {{contactInfo.phone}}</p>
+				<p>Address: {{contactInfo.address}}</p>
+				<p>LinkedIn: {{contactInfo.linkedin}}</p>
+				<p>Github: {{contactInfo.github}}</p>
+			</div>
+
+			<div class="section">
+				<h1 class="section-title">Skills</h1>
+				<div class="section-content">
+					<ul class="skill-set">
+						{% for skill in skills %}
+							<li class="skill">{{skill}}</li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+	<script>
+		const button = document.getElementById('download-button');
+		window.jsPDF = window.jspdf.jsPDF;
+		window.html2canvas = html2canvas;
+
+		function generatePDF() {
+			const { jsPDF } = window.jspdf;
+			let doc = new jsPDF('p', 'mm', 'a4');
+			let pdfjs = document.querySelector('.resume');
+
+			doc.html(pdfjs, {
+				callback: function(doc) {
+					doc.save("resume.pdf");
+				},
+				margin: [20, 20, 20, 20],
+				autoPaging: 'text',
+				x: 0,
+				y: 0,
+				width: 210,
+				height: 297,
+				windowWidth: 1200
+			});
+		}
+
+		button.addEventListener('click', generatePDF);
+	</script>
+</body>
+</html>

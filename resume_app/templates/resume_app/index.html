@@ -18,6 +18,12 @@
                         
             <div class="info">
                 <div>
+                    <div>
+                        <p><input type="file"   accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;"></p>
+                        <p><label for="file" class="button_upload" style="cursor: pointer;">Upload Image</label></p>
+                        <p><img id="output" width="200" /></p>
+                    </div>
+                    
                     <div class="form-row">
                         <label for="name">Name:</label>
                     </div>
@@ -127,55 +133,48 @@
                     <img src="{% static 'images/3.png' %}" style="width: inherit;" />
                 </div>
                 <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                    <img src="{% static 'images/4.png' %}" style="width: inherit;" />
                 </div>
                 <div id = "button1" onclick="submitForm('/generate_resume5/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                    <img src="{% static 'images/5.png' %}" style="width: inherit;" />
                 </div>
                 <div id = "button1" onclick="submitForm('/generate_resume6/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                    <img src="{% static 'images/6.png' %}" style="width: inherit;" />
                 </div>
                 <div id = "button1" onclick="submitForm('/generate_resume7/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                    <img src="{% static 'images/7.png' %}" style="width: inherit;" />
                 </div>
                 <div id = "button1" onclick="submitForm('/generate_resume8/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                    <img src="{% static 'images/8.png' %}" style="width: inherit;" />
                 </div>
                 <div id = "button1" onclick="submitForm('/generate_resume9/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                    <img src="{% static 'images/9.png' %}" style="width: inherit;" />
                 </div>
                 <div id = "button1" onclick="submitForm('/generate_resume10/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                    <img src="{% static 'images/10.png' %}" style="width: inherit;" />
                 </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                <div id = "button1" onclick="submitForm('/generate_resume11/')">
+                    <img src="{% static 'images/11.png' %}" style="width: inherit;" />
                 </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                <div id = "button1" onclick="submitForm('/generate_resume12/')">
+                    <img src="{% static 'images/12.png' %}" style="width: inherit;" />
                 </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                <div id = "button1" onclick="submitForm('/generate_resume13/')">
+                    <img src="{% static 'images/13.png' %}" style="width: inherit;" />
                 </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                <div id = "button1" onclick="submitForm('/generate_resume14/')">
+                    <img src="{% static 'images/14.png' %}" style="width: inherit;" />
                 </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
+                <div id = "button1" onclick="submitForm('/generate_resume15/')">
+                    <img src="{% static 'images/15.png' %}" style="width: inherit;" />
                 </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
-                </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
-                </div>
-                <div id = "button1" onclick="submitForm('/generate_resume4/')">
-                    <img src="{% static 'images/photo.jpg' %}" style="width: inherit;" />
-                </div>
+                
             </div>
         </div>
 
     </form>
 
+    {% load static %}
     <script>
         function openSection(evt, sectionName) {
 
@@ -269,6 +268,38 @@
             form.action = page
             form.submit();  // Submit the form
         }
+
+        var loadFile = function(event) {
+            var image = document.getElementById('output');
+            image.src = URL.createObjectURL(event.target.files[0]);
+            var file = event.target.files[0];
+
+            // // Create a temporary anchor tag
+            // var downloadLink = document.createElement('a');
+            // downloadLink.href = URL.createObjectURL(file);
+            // var url = "{% static 'images/myphoto.jpg' %}"
+            // downloadLink.download = url;
+
+            // // Trigger a click event to start the download
+            // downloadLink.click();
+
+            var formData = new FormData();
+            formData.append('image', file);
+
+            fetch('/api/save_image/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response = response.json())
+            .then(data=>{
+                if (data.status == 'success') {
+                    console.log('success')
+                }
+            })
+            .catch(error => {
+                console.log('Error saving image:', error);
+            });
+        };
     </script>
 </body>
 

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - HTML+CSS3 CV Template</title>
+  {%load static%}
+  <link rel="stylesheet" href="{% static 'styles/resume12.css' %}">
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic' rel='stylesheet'
+    type='text/css'>
+  <!-- <ul class="download_print_buttons horizontal_list">
+    <li><a href="#" onclick="downloadCV()"><span class="icon entypo-download"></span>Download CV</a></li>
+    <li><a href="#"><span class="icon entypo-print"></span>Print CV</a></li>
+  </ul> -->
+
+  <button class="btn btn-block no-print btn-success" onclick="window.print()">PRINT AS PDF</button>
+  <!-- MAIN CONTAINER -->
+  <div id="main_container">
+    <!-- HEADER -->
+    <div id="header">
+      <!-- LOGOTYPE/NAME -->
+      <div class="header_logotype_container">
+        <h1 class="logotype_name">Javier <span class="purple">Latorre</span></h1>
+        <h2 class="logotype_occupation">Frontend Web Developer</h2>
+      </div>
+      <!-- MAIN MENU -->
+      <div class="header_menu_container">
+        <div class="clear"></div>
+        <ul class="header_menu horizontal_list">
+          <!-- <li><a class="no_border purple" href="#">Profile</a></li>
+          <li><a href="#">Education</a></li>
+          <li><a href="#">Skills</a></li>
+          <li><a href="#">Work Experience</a></li>
+          <li><a href="#">Featured Projects</a></li>
+          <li><a href="#">Awards</a></li> -->
+        </ul>
+      </div>
+    </div>
+    <!-- LEFT COL -->
+    <div id="left_col">
+      <div class="profile_frame">
+        <div class="profile_picture">
+          <img src="{% static 'images/photo.png' %}" width="230px" height="260px" />
+        </div>
+        <!-- <img src="images/javier_latorre.jpg" alt="profile picture"> -->
+        
+      </div>
+      <div class="hello_content">
+        <h2>Hello!</h2>
+        <p>{{summary}}</p>
+      </div>
+      <div class="contact_details_content">
+        <h2>Contact details</h2>
+        <p class="purple">Phone:</p>
+        <p>{{contactInfo.phone}}</p>
+        <p class="purple">Email:</p>
+        <p>{{contactInfo.email}}</p>
+        <p class="purple">Address:</p>
+        <p>{{contactInfo.address}}</p>        
+      </div>
+      <!-- <a href="mailto:jlalovi@gmail.com" class="send_message_button">
+        <span class="cut1"></span>
+        <span class="cut2"></span>
+        <span class="content">Send me a message <span class="fontawesome-double-angle-right"></span></span>
+      </a>
+      <div class="get_social_content">
+        <h2>Get social</h2>
+        <ul class="social_icons horizontal_list">
+          <li><a class="facebook" href="https://www.facebook.com/jlalovi"><span
+                class="entypo-facebook-circled"></span><span class="invisible">Facebook</span></a></li>
+          <li><a class="twitter" href="https://twitter.com/jlalovi"><span class="entypo-twitter-circled"></span><span
+                class="invisible">Twitter</span></a></li>
+          <li><a class="linkedin" href="https://www.linkedin.com/in/jlalovi/en"><span
+                class="entypo-linkedin-circled"></span><span class="invisible">LinkedIn</span></a></li>
+        </ul>
+      </div> -->
+    </div>
+    <!-- PROFILE CONTENT -->
+    <div id="content_container">
+      {% for experience in workExperience %}
+      
+
+      <div class="block">
+        <h2>{{experience.title}}</h2>
+        <!-- <blockquote class="profile_quote">
+          <p>"There is no end to education. It is not that you read a book, pass an examination, and finish with
+            education. The whole of life, from the moment you are born to the moment you die, is a process of learning."
+          </p>
+          <p>Jiddu Krishnamurti.</p>
+          <span class="entypo-quote"></span>
+        </blockquote> -->
+      </div>
+      <div class="block">
+        <h2>{{experience.company}}</h2>
+        {% for line in experience.description %}
+        <p>
+            {{line}}
+        </p>
+        {% endfor %}
+      </div>
+      <div class="horizontal_line">
+        <div class="line_left"></div>
+        <div class="left_circle"></div>
+        <div class="central_circle"></div>
+        <div class="right_circle"></div>
+        <div class="line_right"></div>
+      </div>
+      {% endfor %}
+      <!---------------------------------------------------------------------------------------------------------------------->
+      <!-- <div class="block">
+        <h2>Philosophy</h2>
+        <p>I belive in ethic and moral not in imposed rules that you "have to" do or follow.</p>
+        <div class="philosophy_content">
+          <p>I believe life is made from different shades of grey, not from black and white. Furthermore, as a human
+            being with rationality, I think it is our duty to take care of the world and treat others as one would like
+            others to treat oneself. This way of perceiving reality affects my beliefs and my way of behaving.
+            Summarizing on several points:</p>
+          <ul>
+            <li>Pragmatic</li>
+            <li>Honest</li>
+            <li>Respectful</li>
+            <li>Open-minded</li>
+            <li>Coherent</li>
+          </ul>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="horizontal_line">
+        <div class="line_left"></div>
+        <div class="left_circle"></div>
+        <div class="central_circle"></div>
+        <div class="right_circle"></div>
+        <div class="line_right"></div>
+      </div>
+      <div class="last block">
+        <h2>Interests & Hobbies</h2>
+        <p>I'm passionate about technology and human behavior, both determine almost all my interests and hobbies:</p>
+        <ul>
+          <li>Visiting new places</li>
+          <li>Meeting people</li>
+          <li>Having new experiences</li>
+          <li>Hiking and Biking</li>
+          <li>Web Developing</li>
+          <li>Computer Gamming</li>
+          <li>Manga and Anime</li>
+        </ul>
+      </div>
+    </div>
+    <div class="clear"></div> -->
+    <!-- FOOTER -->
+    <!-- <div id="footer">
+      <p class="footer_name">Javier Latorre CV 2015</p>
+    </div> -->
+  </div>
+  <!-- partial -->
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- <script src="{% static 'resume_app/js/jsPDF/dist/jspdf.umd.js' %}" ></script> -->
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+  </script>
+  <script>
+
+    window.jsPDF = window.jspdf.jsPDF;
+    window.html2canvas = html2canvas;
+
+    var specialElementHandlers = {
+      '.no-expert': function (element, renderer) {
+        return true
+      }
+    }
+
+    function downloadCV() {
+
+      const { jsPDF } = window.jspdf;
+
+      let doc = new jsPDF('p', 'mm', 'a4');
+      let pdfjs = document.querySelector('#main_container');
+
+      // doc.addImage("{% static 'images/photo.jpg' %}", "JPEG", 10, 10, 210, 260)
+
+      doc.html(pdfjs, {
+        callback: function (doc) {
+          doc.save("newpdf.pdf");
+        },
+        // margin: [10, 10, 10, 10],
+
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 210, //target width in the PDF document
+        // height: 297,
+        windowWidth: 1050	 //window width in CSS pixels
+      });
+
+    //   var element = document.querySelector("#main_container")
+    //   html2pdf(element, {
+    //     margin: 10,
+    //     filename: 'myresume.pdf',
+    //     image: {type: 'jpeg', quality: 0.98},
+    //     html2canvas: {scale: 2, logging: true, dpi: 192, letterRendering: true},
+    //     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait'}
+    //   });
+     }    
+  </script>
+</body>
+
+</html>

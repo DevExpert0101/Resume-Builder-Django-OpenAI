@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">  
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+  <link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/resume11.css' %}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!-- <button id="download-button">generate PDF</button>
+<div id="editor"></div> -->
+
+<button class="btn btn-block no-print btn-success" onclick="window.print()">PRINT AS PDF</button>
+
+<div class="container" id="content">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="title text-center">
+          <h1>{{name}}</h1>
+          <h3>{{title}}</h3>
+          <!-- <h4><a href="http://neoelemento.com">neoelemento.com</a></h4> -->
+          <hr />
+          <!-- <ul class="list-inline">
+            <li><i class="devicon-laravel-plain colored"></i></li>
+            <li><i class="devicon-javascript-plain colored"></i></li>
+            <li><i class="devicon-html5-plain colored"></i></li>
+            <li><i class="devicon-angularjs-plain colored"></i></li>
+            <li><i class="devicon-linux-plain"></i></li>
+          </ul> -->
+        </div>
+        
+        <!-- summary section -->
+        <div class="summary">
+          <h2 class="text-center">Summary</h2>
+          <p>{{summary}}</p>
+          
+          <!-- <div class="row">
+            <div class="col-md-3 col-sm-3">
+              <p>Business Analysis</p>
+              <p>Project Management</p>
+              <p>WordPress Management</p>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <p>Development</p>
+              <p>Design</p>
+              <p>Linux Admin</p>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <p>Agile Development</p>
+              <p>Scrum of Scrum</p>
+              <p>Frontend Development</p>
+            </div>
+            <div class="col-md-3 col-sm-3">
+              <p>Code Review</p>
+              <p>Peer Review</p>
+              <p>Fullstack Development</p>
+            </div>
+          </div> -->
+
+          <div>
+            <section>
+              <h1>Skills</h1>
+              <!-- <ul class="skill-set">
+                  {% for skill in skills %}
+                  <li>{{skill}}</li>
+                  {% endfor %}
+              </ul> -->
+              <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: space-around; ">
+                {% for skill in skills %}
+                <div>
+
+                  {{skill}}
+                </div>
+                  {% endfor %}
+              </div>
+            </section>
+          </div>
+          
+        </div>
+        
+        
+        <!-- work experience section -->
+        <div class="work-experience">
+          <h2 class="text-center">Work Experience</h2>
+          {% for experience in workExperience %}
+                    
+          <div class="row experience-title">
+            <div class="col-md-9">
+              <h3>{{experience.company}}</h3>
+              <h4>{{experience.title}}</h4>
+              <!-- <h5>Some project</h5> -->
+            </div>
+            <div class="col-md-3">
+              <h5>{{experience.dates}}</h5>
+            </div>
+          </div>
+          <div class="row experience-summary">
+            <div class="col-md-12">
+              {% for line in experience.description %}
+                    <p>
+                        <li>{{line}}</li>
+                    </p>
+                    {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+          
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- partial -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+</script>
+<script src="{% static 'resume_app/js/script.js' %}"></script>
+  
+</body>
+</html>

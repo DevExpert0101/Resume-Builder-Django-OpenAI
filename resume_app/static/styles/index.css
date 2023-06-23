@@ -120,11 +120,12 @@ button:hover {
 }
 
 .button-group {
-  width: 50%;
+  width: 70%;
   padding: 10px;
+  gap: 50px;
   background-color: transparent;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -146,7 +147,7 @@ button:hover {
 }
 
 #button1 {
-  width: 150px;
+  width: 180px;
   height: auto;
   cursor: pointer;
   border: 0px solid black;
@@ -157,4 +158,19 @@ button:hover {
   /* border: 1px solid black; */
   transform: scale(1.2);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+
+
+.button_upload {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button_upload:hover {
+  background-color: #45a049;
 }

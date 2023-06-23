@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles/resume15.css' %}">
+
+</head>
+
+<body>
+  <!-- partial:index.partial.html -->
+  <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+  <button class="btn btn-block no-print btn-success" onclick="window.print()">PRINT AS PDF</button>
+
+  <div class="resume" id="resume">
+    <div class="resume_left">
+      <div class="resume_profile">
+        <img src="{% static 'images/photo.jpg' %}">
+      </div>
+      <div class="resume_content">
+        <div class="resume_item resume_info">
+          <div class="title">
+            <p class="bold">stephen colbert</p>
+            <p class="regular">Designer</p>
+          </div>
+          <ul>
+            <li>
+              <div class="icon">
+                <i class="fas fa-map-signs"></i>
+              </div>
+              <div class="data">
+                21 Street, Texas <br /> USA
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fas fa-mobile-alt"></i>
+              </div>
+              <div class="data">
+                +324 4445678
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="data">
+                stephen@gmail.com
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fab fa-weebly"></i>
+              </div>
+              <div class="data">
+                www.stephen.com
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="resume_item resume_skills">
+          <div class="title">
+            <p class="bold">skill's</p>
+          </div>
+          <ul>
+            <li>
+              <div class="skill_name">
+                HTML
+              </div>
+              <div class="skill_progress">
+                <span style="width: 80%;"></span>
+              </div>
+              <div class="skill_per">80%</div>
+            </li>
+            <li>
+              <div class="skill_name">
+                CSS
+              </div>
+              <div class="skill_progress">
+                <span style="width: 70%;"></span>
+              </div>
+              <div class="skill_per">70%</div>
+            </li>
+            <li>
+              <div class="skill_name">
+                SASS
+              </div>
+              <div class="skill_progress">
+                <span style="width: 90%;"></span>
+              </div>
+              <div class="skill_per">90%</div>
+            </li>
+            <li>
+              <div class="skill_name">
+                JS
+              </div>
+              <div class="skill_progress">
+                <span style="width: 60%;"></span>
+              </div>
+              <div class="skill_per">60%</div>
+            </li>
+            <li>
+              <div class="skill_name">
+                JQUERY
+              </div>
+              <div class="skill_progress">
+                <span style="width: 88%;"></span>
+              </div>
+              <div class="skill_per">88%</div>
+            </li>
+          </ul>
+        </div>
+        <div class="resume_item resume_social">
+          <div class="title">
+            <p class="bold">Social</p>
+          </div>
+          <ul>
+            <li>
+              <div class="icon">
+                <i class="fab fa-facebook-square"></i>
+              </div>
+              <div class="data">
+                <p class="semi-bold">Facebook</p>
+                <p>Stephen@facebook</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fab fa-twitter-square"></i>
+              </div>
+              <div class="data">
+                <p class="semi-bold">Twitter</p>
+                <p>Stephen@twitter</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fab fa-youtube"></i>
+              </div>
+              <div class="data">
+                <p class="semi-bold">Youtube</p>
+                <p>Stephen@youtube</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon">
+                <i class="fab fa-linkedin"></i>
+              </div>
+              <div class="data">
+                <p class="semi-bold">Linkedin</p>
+                <p>Stephen@linkedin</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="resume_right">
+      <div class="resume_item resume_about">
+        <div class="title">
+          <p class="bold">About us</p>
+        </div>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Perspiciatis illo fugit officiis distinctio culpa
+          officia totam atque exercitationem inventore repudiandae?</p>
+      </div>
+      <div class="resume_item resume_work">
+        <div class="title">
+          <p class="bold">Work Experience</p>
+        </div>
+        <ul>
+          <li>
+            <div class="date">2013 - 2015</div>
+            <div class="info">
+              <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
+            </div>
+          </li>
+          <li>
+            <div class="date">2015 - 2017</div>
+            <div class="info">
+              <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
+            </div>
+          </li>
+          <li>
+            <div class="date">2017 - Present</div>
+            <div class="info">
+              <p class="semi-bold">Lorem ipsum dolor sit amet.</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resume_item resume_education">
+        <div class="title">
+          <p class="bold">Education</p>
+        </div>
+        <ul>
+          <li>
+            <div class="date">2010 - 2013</div>
+            <div class="info">
+              <p class="semi-bold">Web Designing (Texas University)</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
+            </div>
+          </li>
+          <li>
+            <div class="date">2000 - 2010</div>
+            <div class="info">
+              <p class="semi-bold">Texas International School</p>
+              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, voluptatibus!</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="resume_item resume_hobby">
+        <div class="title">
+          <p class="bold">Hobby</p>
+        </div>
+        <ul>
+          <li><i class="fas fa-book"></i></li>
+          <li><i class="fas fa-gamepad"></i></li>
+          <li><i class="fas fa-music"></i></li>
+          <li><i class="fab fa-pagelines"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- partial -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+  </script>
+
+  <!-- <script>
+
+    window.jsPDF = window.jspdf.jsPDF;
+    window.html2canvas = html2canvas;
+
+    var specialElementHandlers = {
+      '.no-expert': function (element, renderer) {
+        return true
+      }
+    }
+
+    function downloadCV() {
+
+      const { jsPDF } = window.jspdf;
+
+      let doc = new jsPDF('p', 'mm', 'a4');
+      let pdfjs = document.querySelector('#resume');
+      doc.html(pdfjs, {
+        callback: function (doc) {
+          doc.save("newpdf.pdf");
+        },
+        margin: [10, 10, 10, 10],
+
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 210, //target width in the PDF document
+        height: 297,
+        windowWidth: 1200	 //window width in CSS pixels
+      });
+    }
+  </script> -->
+  <!-- <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+  <script>
+    
+
+    window.jsPDF = window.jspdf.jsPDF;
+    window.html2canvas = html2canvas;
+
+    var button = document.getElementById('download-button');
+    button.addEventListener('click', function() {
+        var content = document.queryCommandIndeterm('#resume');
+        html2canvas(content, {
+            allowTaint: true,
+            useCORS: true, // Allows cross-origin images to be used
+        }).then(function(canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var doc = new jsPDF('p', 'mm');
+            doc.addImage(imgData, 'PNG', 10, 10);
+            doc.save('sample.pdf');
+        });
+    });
+</script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script>
+
+  window.jsPDF = window.jspdf.jsPDF;
+  window.html2canvas = html2canvas;
+
+  var specialElementHandlers = {
+    '.no-expert': function (element, renderer) {
+      return true
+    }
+  }
+
+  function downloadCV() {
+  const element = document.querySelector('#resume');
+
+  // html2pdf()
+  //   .set({
+  //     margin: [10, 10, 10, 10],
+  //     filename: 'newpdf.pdf',
+  //     image: { type: 'jpeg', quality: 0.98 },
+  //     html2canvas: { scale: 2 , logging: true, dpi: 192, letterRendering: true},
+  //     jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  //   })
+  //   .from(element)
+  //   .save();
+
+  html2pdf(element, {
+    margin: 10,
+    filename: 'myresume.pdf',
+    image: {type: 'jpeg', quality: 0.98},
+    html2canvas: {scale: 2, logging: true, dpi: 192, letterRendering: true},
+    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait'}
+  });
+}
+</script>
+
+</body>
+
+</html>

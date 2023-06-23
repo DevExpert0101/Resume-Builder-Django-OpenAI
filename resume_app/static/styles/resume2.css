@@ -35,8 +35,11 @@ body
 	text-rendering:optimizeLegibility;
 }
 
-.parent
-{
+.parent {
+	width: 1050px;
+	height: 1485px; 
+	display: flex;
+	margin: auto;
 }
 
 .skill-set li:hover
@@ -66,7 +69,7 @@ color: #145DA0;
 	margin-left:-1px;
 	min-width:256px;
 	width:30%;
-  float:left;
+  /* float:left; */
 	/* background-color:rgba(0, 0, 0,0.1); */
 	border-left:1px solid rgba(0,0,0,.1);
 	padding-left: 30px;
@@ -86,7 +89,8 @@ color: #145DA0;
 	height:100%;
 	width:70%;
 	padding-left: 30px;
-  padding-top: 70px;
+	padding-right: 30px;
+  padding-top: 70px;	
 
 }
 
@@ -246,3 +250,6 @@ ul
 	text-align:justify;
 }
 
+@media print {
+	.no-print, .no-print * { display: none !important; }
+}

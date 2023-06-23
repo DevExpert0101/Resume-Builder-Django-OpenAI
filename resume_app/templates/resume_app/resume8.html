@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'styles/resume8.css' %}" />
+    
+</head>
+
+<body>
+  <button class="btn btn-block no-print btn-success" onclick="window.print()">PRINT AS PDF</button>
+    <main>
+        <header>
+            <h1>{{title}}</h1>
+        </header>
+        <div class="identity-experiences-skills">
+            <aside>
+                <div>
+                    <img src="{% static 'images/photo.jpg' %}" />
+                    <article>
+                        <div><strong>{{name}}</strong></div>
+                        <address>{{contactInfo.address}}
+                        <div>{{contactInfo.github}}</div>
+                        <div>{{contactInfo.linkedin}}</div>
+                        
+                    </article>
+                </div>
+                <!-- <article>
+                    <h2>Langues</h2>
+                    <h3>Français</h3> Langue maternelle
+                    <h3>Anglais</h3> Niveau professionnelle
+                    <h3>Allemand et Italien</h3> Conversation courante
+                </article> -->
+                <article>
+                    <div><strong>{{contactInfo.phone}}</strong></div>
+                    <div><strong>{{contactInfo.email}}</strong></div>
+                </article>
+            </aside>
+            <section>
+                <article>
+                    <div class="experiences">
+                        <header>
+                            <h2>Work Experience</h2>
+                        </header>
+                        {% for experience in workExperience %}
+                        <div class="experience-wrapper">
+                            <div class="experience-duration">{{experience.dates}}</div>
+                            <div class="experience-description">
+                                <h3>{{experience.company}} | {{experience.title}}</h3>
+                                {% for line in experience.description %}
+                                <ul>
+                                  <li>{{line}}</li>
+                                </ul>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}                        
+                    </div>
+                </article>
+                <!-- <article>
+                    <header>
+                        <h2>Projects</h2>
+                    </header>
+                    <div>
+                        <h3>CodingPool<span>(alternance)</span></h3>
+                        <p>Flask ,Vue.js, AJAX, SQLAlchemy, Git, Docker, Jest, GitLab CI</p>
+                        <p>Développement d’une application selon un cahier des charges prédéfini.
+                            Création de services Web sous forme de modules réutilisables (authentification, tri).
+                            Maintenance, amélioration et ajout de nouvelles fonctionnalités.
+                            Mise en place de tests unitaires.
+                        </p>
+                        <h3>CodingPool<span>(alternance)</span></h3>
+                        <p>Flask ,Vue.js, AJAX, SQLAlchemy, Git, Docker, Jest, GitLab CI</p>
+                        <p>Développement d’une application selon un cahier des charges prédéfini.
+                            Création de services Web sous forme de modules réutilisables (authentification, tri).
+                            Maintenance, amélioration et ajout de nouvelles fonctionnalités.
+                            Mise en place de tests unitaires.
+                        </p>
+                        <h3>CodingPool<span>(alternance)</span></h3>
+                        <p>Flask ,Vue.js, AJAX, SQLAlchemy, Git, Docker, Jest, GitLab CI</p>
+                        <p>Développement d’une application selon un cahier des charges prédéfini.
+                            Création de services Web sous forme de modules réutilisables (authentification, tri).
+                            Maintenance, amélioration et ajout de nouvelles fonctionnalités.
+                            Mise en place de tests unitaires.
+                        </p>
+                    </div>
+                </article> -->
+                <article>
+                    <div class="experiences">
+                        <header>
+                            <h2>Education</h2>
+                        </header>
+                        {% for edu in education %}
+                        <div class="experience-wrapper">
+                            <div class="experience-duration">{{edu.dates}}</div>
+                            <div class="experience-description">
+                                <h3>{{edu.school}}</h3>
+                                {{edu.degree}}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- <div class="experience-wrapper">
+                            <div class="experience-duration">Été<br>2015-2018</div>
+                            <div class="experience-description">
+                                <h3>Mairie de Paris</h3>
+                                Animateur et surveillant de baignade
+                            </div>
+                        </div>
+                        <div class="experience-wrapper">
+                            <div class="experience-duration">mars-juin<br>2018</div>
+                            <div class="experience-description">
+                                <h3>Acadomia<span>, Paris</span></h3>
+                                Cours particuliers de mathématiques et français à des collégiens
+                            </div>
+                        </div>
+                        <div class="experience-wrapper">
+                            <div class="experience-duration">Sept. 2017<br>-<br>Fév. 2018</div>
+                            <div class="experience-description">
+                                <h3>Garfish Kirribilli<span>, Sydney (Australie)</span></h3>
+                                Serveur<br>
+                                Accueil client, marketing, environnement 100 % anglophone
+                            </div>
+                        </div> -->
+                    </div>
+                </article>
+                <!-- <article>
+                    <header>
+                        <h2>CENTRES D'INTERÊTS</h2>
+                    </header>
+                    <div class="hobbies">
+                        <div>
+                            <h3>Sport</h3>
+                            <ul>
+                                <li>Course à pied</li>
+                                <li>Natation</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Bénévolat</h3>
+                            <ul>
+                                <li>Aide aux devoirs</li>
+                                <li>Soupe populaire</li>
+                            </ul>
+                        </div>
+                    </div>
+                </article> -->
+            </section>
+        </div>
+    </main>
+    
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+<script>
+    const main = document.querySelector("main");
+    const button = document.querySelector("button");
+
+    function createPDF() {
+        var pdf = new jsPDF('p', 'pt', 'a4');
+        pdf.addHTML(main, function () {
+            pdf.save('web.pdf');
+        });
+    }
+
+    button.addEventListener("click", createPDF);
+</script>
+
+</html>

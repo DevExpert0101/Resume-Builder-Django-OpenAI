@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <style>
     body {
@@ -9,7 +10,8 @@
     .resume {
       background-color: #f2f2f2;
       padding: 20px;
-      max-width: 800px;
+      /* max-width: 800px; */
+      width: 1050px;
       margin: 0 auto;
     }
 
@@ -55,10 +57,60 @@
       font-size: 14px;
       color: #555;
     }
+
+    .download_print_buttons {
+      width: 225px;
+      height: 45px;
+      float: right;
+      cursor: pointer;
+    }
+
+    .download_print_buttons a {
+      text-decoration: none;
+      font-size: 12px;
+      font-family: 'Lato', Helvetica, sans-serif;
+      font-style: italic;
+      line-height: 45px;
+      padding: 16px 17px;
+      background: #353638;
+    }
+
+    .download_print_buttons a:hover {
+      background: #020609;
+      cursor: grab;
+    }
+
+    .download_print_buttons .icon {
+      color: #02070a;
+      padding-right: 6px;
+      font-style: normal;
+      font-size: 18px;
+
+    }
+
+    .icon-angle-double-right {
+      position: relative;
+      top: 2px;
+    }
+
+    .download_print_buttons a:hover .icon {
+      color: #e4e3e8;
+    }
+
+    @media print {
+      .no-print, .no-print * { display: none !important; }
+    }
   </style>
 </head>
+
 <body>
-  <div class="resume">
+  <!-- <ul class="download_print_buttons horizontal_list">
+    <li onclick="downloadCV()"><span class="icon entypo-download"></span>Download CV</a></li>
+  </ul> -->
+
+  <button class="btn btn-block no-print btn-success" onclick="window.print()">PRINT AS PDF</button>
+
+  <div class="resume" id="resume">
     <div class="resume-header">
       <h1>{{name}}</h1>
       <h2>{{title}}</h2>
@@ -107,5 +159,47 @@
       </ul>
     </div>
   </div>
+  {% load static %}
+  <script src="{% static 'resume_app/js/script.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+  </script>
+
+  <script>
+
+    window.jsPDF = window.jspdf.jsPDF;
+    window.html2canvas = html2canvas;
+
+    var specialElementHandlers = {
+      '.no-expert': function (element, renderer) {
+        return true
+      }
+    }
+
+    function downloadCV() {
+
+      const { jsPDF } = window.jspdf;
+
+      let doc = new jsPDF('p', 'mm', 'a4');
+      let pdfjs = document.querySelector('#resume');
+      doc.html(pdfjs, {
+        callback: function (doc) {
+          doc.save("newpdf.pdf");
+        },
+        // margin: [10, 10, 10, 10],
+
+        autoPaging: 'text',
+        x: 0,
+        y: 0,
+        width: 210, //target width in the PDF document
+        height: 297,
+        windowWidth: 1200	 //window width in CSS pixels
+      });
+    }
+  </script>
 </body>
+
 </html>

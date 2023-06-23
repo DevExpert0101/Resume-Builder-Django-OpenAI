@@ -20,4 +20,5 @@ urlpatterns = [
     path('generate_resume13/', views.generate_resume13, name='generate_resume13'),
     path('generate_resume14/', views.generate_resume14, name='generate_resume14'),
     path('generate_resume15/', views.generate_resume15, name='generate_resume15'),
+    path('api/save_image/', views.save_image, name='save_image'),
 ]
